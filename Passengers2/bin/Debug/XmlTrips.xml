@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Trips>
+  <Trip ID="0">
+    <Cost>100</Cost>
+    <From>
+    </From>
+    <To>
+    </To>
+    <Extra>
+    </Extra>
+    <Date>24.04.2018 17:44:07</Date>
+  </Trip>
+  <Trip ID="0">
+    <Cost>100</Cost>
+    <From>
+    </From>
+    <To>
+    </To>
+    <Extra>
+    </Extra>
+    <Date>24.04.2018 18:00:26</Date>
+  </Trip>
+</Trips>

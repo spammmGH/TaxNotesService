@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Outcomes>
+  <Outcome Category="Other" ID="0">
+    <Date>18.04.2018 17:55:02</Date>
+    <Cost>100</Cost>
+    <Extra>
+    </Extra>
+  </Outcome>
+  <Outcome ID="0" Category="Gasoline">
+    <Date>18.04.2018 17:55:03</Date>
+    <Cost>100</Cost>
+    <Extra>
+    </Extra>
+  </Outcome>
+  <Outcome ID="0" Category="Auto">
+    <Cost>
+    </Cost>
+    <Date>18.04.2018 20:33:31</Date>
+    <Extra>500</Extra>
+  </Outcome>
+  <Outcome ID="0" Category="Auto">
+    <Cost>
+    </Cost>
+    <Date>18.04.2018 20:33:32</Date>
+    <Extra>500</Extra>
+  </Outcome>
+  <Outcome ID="0" Category="Auto">
+    <Cost>
+    </Cost>
+    <Date>18.04.2018 20:33:33</Date>
+    <Extra>500</Extra>
+  </Outcome>
+  <Outcome ID="0" Category="Auto">
+    <Cost>
+    </Cost>
+    <Date>18.04.2018 20:33:34</Date>
+    <Extra>500</Extra>
+  </Outcome>
+  <Outcome ID="0" Category="Auto">
+    <Cost>500</Cost>
+    <Date>18.04.2018 20:35:05</Date>
+    <Extra>
+    </Extra>
+  </Outcome>
+</Outcomes>
