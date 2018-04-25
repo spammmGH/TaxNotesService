@@ -13,39 +13,40 @@ namespace Passengers2
     public partial class Functionality : Object
     {
 
-        //private List<Trip> trips = new List<Trip>();
 
-            //чисто настройки
+        //чисто настройки
         private NameValueCollection settings;
-        private string xmlTrips;
-        private string xmlOutcomes;
+        private string tripsWay;
+        private string outcomesWay;
 
         private XmlDocument xDocTrips = new XmlDocument();
         private XmlDocument xDocOutcomes = new XmlDocument();
 
 
         // файлы записи
-        FileStream fileTrips;
-        FileStream fileOutcomes;
+
 
 
         public Functionality()
         {
 
             settings = ConfigurationManager.AppSettings;
-            xmlTrips = settings["XmlTrips"];
-            xmlOutcomes = settings["XmlOutcomes"];
+            tripsWay = settings["XmlTrips"];
+            outcomesWay = settings["XmlOutcomes"];
 
+            //проверяем наличие файлов
+            FileStream fileTrips;
+            FileStream fileOutcomes;
             try
             {
-                fileTrips = new FileStream(xmlTrips, FileMode.Open);
+                fileTrips = new FileStream(tripsWay, FileMode.Open);
                 //test
                 fileTrips.Close();
 
             }
             catch (Exception e)
             {
-                fileTrips = new FileStream(xmlTrips, FileMode.Create);
+                fileTrips = new FileStream(tripsWay, FileMode.Create);
                 XmlDocument _doc = new XmlDocument();
                 //создание объявления (декларации) документа
 
@@ -58,14 +59,14 @@ namespace Passengers2
             }
             try
             {
-                fileOutcomes = new FileStream(xmlOutcomes, FileMode.Open);
+                fileOutcomes = new FileStream(outcomesWay, FileMode.Open);
                 //test
                 fileOutcomes.Close();
 
             }
             catch (Exception e)
             {
-                fileOutcomes = new FileStream(xmlOutcomes, FileMode.Create);
+                fileOutcomes = new FileStream(outcomesWay, FileMode.Create);
                 XmlDocument _doc = new XmlDocument();
                 //создание объявления (декларации) документа
 
@@ -80,12 +81,22 @@ namespace Passengers2
 
             try
             {
-                xDocTrips.Load(xmlTrips);
+                xDocTrips.Load(tripsWay);
 
             }
             catch (Exception e)
             {
-                
+
+                Console.WriteLine(e.Message);
+            }
+            try
+            {
+                xDocOutcomes.Load(outcomesWay);
+
+            }
+            catch (Exception e)
+            {
+
                 Console.WriteLine(e.Message);
             }
 
@@ -101,7 +112,9 @@ namespace Passengers2
                     Extra = extra,
                     AddressFrom = addressFrom,
                     AddressTo = addressTo,
-                    Cost = cost
+                    Cost = cost,
+                    Id = GetNewId(Id.trip)
+                    
                 };
                 //trips.Add(myTrip);
                 WriteTrip(myTrip);
@@ -160,6 +173,8 @@ namespace Passengers2
             return listTrip;
         }
 
+
+
         public List<Trip> GetTrips(DateTime date)
         {
             List<Trip> listTrip = new List<Trip> { };
@@ -213,37 +228,18 @@ namespace Passengers2
                             }
                             listTrip.Add(result);
                         }
-
-
-
                     }
-
-
                 }
             }
 
             return listTrip;
         }
 
-
-
-
-        //public int GetSumm()
-        //{
-        //    int sum = 0;
-        //    foreach(Trip t in trips)
-        //    {
-        //        sum +=t.Cost;
-        //    }
-        //    return sum;
-        //}
-
         public Trip GetTrip(int id)
         {
             return ReadTrip(id);
         }
 
-        
 
         private void WriteTrip(Trip myTrip)
         {
@@ -286,7 +282,7 @@ namespace Passengers2
             tripElement.AppendChild(dateElement);
 
             xRoot.AppendChild(tripElement);
-            xDocTrips.Save(xmlTrips);
+            xDocTrips.Save(tripsWay);
         }
 
         private Trip ReadTrip(int id)
@@ -323,9 +319,13 @@ namespace Passengers2
                             result.AddressFrom = childNode.InnerText;
                         }
                     }
+                    return result;
                 }
+                //TODO: по несуществующему ID будет выдавать стандартную поездку
+                //throw new Exception("такой поездки нет");
             }
-            return result;
+            throw new Exception("такой поездки нет");
+
         }
 
         public bool DeleteTrip(int id)
@@ -336,13 +336,15 @@ namespace Passengers2
                 if (childElement.Attributes.GetNamedItem("ID").Value.Equals(id.ToString()))
                 {
                     xRoot.RemoveChild(childElement);
-                    xDocTrips.Save(settings[xmlTrips]);
+                    xDocTrips.Save(settings[tripsWay]);
                     return true;
                 }
             }
             return false;
 
         }
+
+
 
 
     }

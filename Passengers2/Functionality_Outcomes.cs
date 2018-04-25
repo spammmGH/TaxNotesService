@@ -23,6 +23,7 @@ namespace Passengers2
                 Outcome outcome = new Outcome();
                 outcome.Cost = cost;
                 outcome.Extra = extra;
+                outcome.Id = GetNewId(Id.outcome);
                 if (WriteOutcome(outcome))
                 {
                     return true;
@@ -44,7 +45,7 @@ namespace Passengers2
             try
             {
                 //загружаем элемент
-                xDocOutcomes.Load(xmlOutcomes);
+                xDocOutcomes.Load(outcomesWay);
                 //
                 XmlElement xRoot = xDocOutcomes.DocumentElement;
                 //создание записи
@@ -78,7 +79,7 @@ namespace Passengers2
                 newOutcome.AppendChild(extraElement);
 
                 xRoot.AppendChild(newOutcome);
-                xDocOutcomes.Save(xmlOutcomes);
+                xDocOutcomes.Save(outcomesWay);
                 return true;
             }
             catch (Exception e)
@@ -88,5 +89,121 @@ namespace Passengers2
             }
             
         }
+
+        enum Id
+        {
+            outcome,
+            trip
+        }
+        private int GetNewId(Id kind)
+        {
+            int _id = 0;
+
+            switch (kind)
+            {
+                case Id.outcome:
+                    if (GetOutcomes().Count != 0)
+                    {
+                        foreach (Outcome t in GetOutcomes())
+                        {
+                            if (t.Id >= _id)
+                            {
+                                _id = ++t.Id;
+                            }
+                        }
+                        return _id;
+                    }
+                    return _id;
+                        
+                        
+                case Id.trip:
+                    if (GetTrips().Count != 0)
+                    {
+                        foreach (Trip t in GetTrips())
+                        {
+                            if (t.Id >= _id)
+                            {
+                                _id = ++t.Id;
+                            }
+                        }
+
+                        return _id;
+                    }
+                    return _id;
+            }
+
+            return _id;
+        }
+
+        public List<Outcome> GetOutcomes()
+        {
+            List<Outcome> listOutcome = new List<Outcome> { };
+
+            XmlElement xRoot = xDocOutcomes.DocumentElement;
+
+            foreach (XmlNode xnode in xRoot)
+            {
+                Outcome result = new Outcome();
+
+                result.Id = int.Parse(xnode.Attributes.GetNamedItem("ID").Value);
+                //TODO: как парсить категорию, которая является перечислением
+                //result.Category = Category.(xnode.Attributes.GetNamedItem("Category").Value);
+
+                foreach (XmlNode childNode in xnode.ChildNodes)
+                {
+                    if (childNode.Name == "Cost")
+                    {
+                        result.Cost = int.Parse(childNode.InnerText);
+                    }
+                    if (childNode.Name == "Date")
+                    {
+                        DateTime date;
+                        //result.Date = DateTime.TryParse(childNode.InnerText, out date);
+                        DateTime.TryParse(childNode.InnerText, out date);
+                        result.Date = date;
+                    }
+                    if (childNode.Name == "Extra")
+                    {
+                        result.Extra = childNode.InnerText;
+                    }
+                }
+                listOutcome.Add(result);
+            }
+
+            return listOutcome;
+        }
+        private Outcome ReadOutcome(int id)
+        {
+            XmlElement xRoot = xDocOutcomes.DocumentElement;
+            Outcome result = new Outcome();
+            foreach (XmlNode xnode in xRoot)
+            {
+
+                if (xnode.Attributes.GetNamedItem("ID").Value.Equals(id.ToString()))
+                {
+                    result.Id = id;
+                    //TODO: опять с категорией непонятка
+                    //result.Category = Category.
+                    foreach (XmlNode childNode in xnode.ChildNodes)
+                    {
+                        if (childNode.Name == "Cost")
+                        {
+                            result.Cost = int.Parse(childNode.InnerText);
+                        }
+                        if (childNode.Name == "Date")
+                        {
+                            result.Date = DateTime.Parse(childNode.InnerText);
+                        }
+                        if (childNode.Name == "Extra")
+                        {
+                            result.Extra = childNode.InnerText;
+                        }
+                    }
+                    return result;
+                }
+            }
+            throw new Exception("Нет такой записи");
+        }
+
     }
 }

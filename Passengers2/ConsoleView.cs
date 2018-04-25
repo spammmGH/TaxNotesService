@@ -94,7 +94,6 @@ namespace Passengers2
             Console.WriteLine("Commands: \n " +
                " exit \n" +
                " addTrip \n" +
-               " show \n" +
                " getTrip \n" +
                " getTrips \n" +
                " delete \n" +
