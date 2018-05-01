@@ -35,6 +35,8 @@ namespace Passengers2
             outcomesWay = settings["XmlOutcomes"];
 
             //проверяем наличие файлов
+
+            // ВОзожном стоит сделать через FileInfo -Create Exist
             FileStream fileTrips;
             FileStream fileOutcomes;
             try
