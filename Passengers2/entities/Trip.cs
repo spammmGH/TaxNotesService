@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Passengers2
 {
-    public class Trip
+    public class Trip : Note
     {
         private int id;
         private int cost = 100;
@@ -30,23 +30,23 @@ namespace Passengers2
                     cost = value;
             }
         }
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
+        //public int Id
+        //{
+        //    get
+        //    {
+        //        return id;
+        //    }
+        //    set
+        //    {
+        //        id = value;
+        //    }
 
-        }
-        public DateTime Date
-        {
-            get { return date; }
-            set { date = value; }
-        }
+        //}
+        //public DateTime Date
+        //{
+        //    get { return date; }
+        //    set { date = value; }
+        //}
 
         public string AddressTo
         {
@@ -98,7 +98,7 @@ namespace Passengers2
 
         }
 
-        public override string ToString()
+        public override string GetInfo()
         {
             return this.date.ToString() + " поездка стоимостью " + this.cost.ToString() + " из " + this.AddressFrom + " в " + this.addressTo + "\n";
         }

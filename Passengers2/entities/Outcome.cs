@@ -10,7 +10,7 @@ namespace Passengers2
     {
         Auto, Food, Other
     };
-    public class Outcome
+    public class Outcome : Note
     {
 
 
@@ -37,14 +37,14 @@ namespace Passengers2
             }
             set { category = value; }
         }
-        public DateTime Date
-        {
-            get
-            {
-                return date;
-            }
-            set { date = value; }
-        }
+        //public DateTime Date
+        //{
+        //    get
+        //    {
+        //        return date;
+        //    }
+        //    set { date = value; }
+        //}
         public int Cost
         {
             get
@@ -53,20 +53,20 @@ namespace Passengers2
             }
             set { cost = value; }
         }
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-            set { id = value; }
-        }
+        //public int Id
+        //{
+        //    get
+        //    {
+        //        return id;
+        //    }
+        //    set { id = value; }
+        //}
         public Outcome()
         {
 
         }
 
-        public override string ToString()
+        public override string GetInfo()
         {
             return date.ToString() + " " + category.ToString() + " на сумму " + cost + " " + extra;
         }

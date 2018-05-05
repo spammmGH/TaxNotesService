@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ConsoleView.cs" />
     <Compile Include="entities\Driver.cs" />
+    <Compile Include="entities\Note.cs" />
     <Compile Include="entities\Outcome.cs" />
     <Compile Include="Functionality_Trips.cs" />
     <Compile Include="Functionality_Outcomes.cs" />

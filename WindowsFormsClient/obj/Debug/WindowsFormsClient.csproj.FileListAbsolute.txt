@@ -26,3 +26,17 @@ G:\iDev\GIT\Passengers2\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.G
 G:\iDev\GIT\Passengers2\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.CoreCompileInputs.cache
 G:\iDev\GIT\Passengers2\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe
 G:\iDev\GIT\Passengers2\WindowsFormsClient\obj\Debug\WindowsFormsClient.pdb
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\bin\Debug\WindowsFormsClient.exe.config
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\bin\Debug\WindowsFormsClient.exe
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\bin\Debug\WindowsFormsClient.pdb
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\bin\Debug\Passengers2.exe
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\bin\Debug\Passengers2.pdb
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\bin\Debug\Passengers2.exe.config
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.csprojResolveAssemblyReference.cache
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.Form1.resources
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.FormTripsList.resources
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.Properties.Resources.resources
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.GenerateResource.Cache
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.CoreCompileInputs.cache
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe
+G:\iDev\GIT\Passengers2\TaxNotesService\WindowsFormsClient\obj\Debug\WindowsFormsClient.pdb
