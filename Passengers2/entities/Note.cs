@@ -8,8 +8,33 @@ namespace Passengers2
 {
     public abstract class Note
     {
-        private int id;
-        private DateTime date;
+        protected int id;
+        protected DateTime date;
+        protected int cost;
+        protected string extra = "";
+
+
+        public Note()
+        {
+            date = DateTime.Now;
+        }
+        public int Cost
+        {
+            get
+            {
+                return cost;
+            }
+            set { cost = value; }
+        }
+
+        public string Extra
+        {
+            get
+            {
+                return extra;
+            }
+            set { extra = value; }
+        }
 
         public int Id
         {
@@ -23,7 +48,7 @@ namespace Passengers2
         {
             get { return date; }
             set { date = value; }
-
+        }
 public abstract string GetInfo();
     }
 }
